@@ -8,7 +8,7 @@ This is the Capstone project for Udacity's Android Developer Nanodegree program.
 Create an account on `https://www.wanikani.com/` and retrieve your API TOKEN from 
 `Profile Image (top right) -> API Tokens -> Generage a new token (default options are okay)`
 
-Navigate to the `PopularMovies/app/build.gradle` file and add your `token` to the `TOKEN` field. Please replace only `add_api_toke_value_here` with your `token` and not the single or double quotes (`'"`).
+Navigate to the `CapstoneProject/app/build.gradle` file and add your `token` to the `TOKEN` field. Please replace only `add_api_toke_value_here` with your `token` and not the single or double quotes (`'"`).
 
 # About
 

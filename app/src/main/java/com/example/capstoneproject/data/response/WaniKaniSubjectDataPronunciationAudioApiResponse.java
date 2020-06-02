@@ -48,7 +48,7 @@ public class WaniKaniSubjectDataPronunciationAudioApiResponse {
         @Nullable private final Integer voiceActorId;
 
         @SerializedName("voice_actor_name")
-        @Nullable private final String voiceActoryName;
+        @Nullable private final String voiceActorName;
 
         @SerializedName("voice_description")
         @Nullable private final String voiceDescription;
@@ -58,14 +58,14 @@ public class WaniKaniSubjectDataPronunciationAudioApiResponse {
                 @Nullable final Integer sourceId,
                 @Nullable final String pronunciation,
                 @Nullable final Integer voiceActorId,
-                @Nullable final String voiceActoryName,
+                @Nullable final String voiceActorName,
                 @Nullable final String voiceDescription
         ) {
             this.gender = gender;
             this.sourceId = sourceId;
             this.pronunciation = pronunciation;
             this.voiceActorId = voiceActorId;
-            this.voiceActoryName = voiceActoryName;
+            this.voiceActorName = voiceActorName;
             this.voiceDescription = voiceDescription;
         }
 
@@ -77,7 +77,7 @@ public class WaniKaniSubjectDataPronunciationAudioApiResponse {
                     ", sourceId=" + sourceId +
                     ", pronunciation='" + pronunciation + '\'' +
                     ", voiceActorId=" + voiceActorId +
-                    ", voiceActoryName='" + voiceActoryName + '\'' +
+                    ", voiceActorName='" + voiceActorName + '\'' +
                     ", voiceDescription='" + voiceDescription + '\'' +
                     '}';
         }

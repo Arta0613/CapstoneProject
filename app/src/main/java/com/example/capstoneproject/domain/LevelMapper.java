@@ -36,11 +36,11 @@ public class LevelMapper {
                     }
 
                     if (subject.getObject().equals(SUBJECT_RADICAL) && !isRadicalOmitted(subject.getData().getHiddenAt())) {
-                        levels.get(level).getRadicalList().add(mapSubjectType(subject.getData()));
+                        levels.get(level).getRadicalList().add(mapSubjectType(subject.getId(), subject.getData()));
                     } else if (subject.getObject().equals(SUBJECT_KANJI)) {
-                        levels.get(level).getKanjiList().add(mapSubjectType(subject.getData()));
+                        levels.get(level).getKanjiList().add(mapSubjectType(subject.getId(), subject.getData()));
                     } else if (subject.getObject().equals(SUBJECT_VOCABULARY)) {
-                        levels.get(level).getVocabularyList().add(mapSubjectType(subject.getData()));
+                        levels.get(level).getVocabularyList().add(mapSubjectType(subject.getId(), subject.getData()));
                     }
                 }
             }
@@ -51,8 +51,11 @@ public class LevelMapper {
 
     @NonNull
     private SubjectType mapSubjectType(
-            @NonNull final WaniKaniSubjectDataApiResponse dataApiResponse) {
+            @Nullable final Integer subjectId,
+            @NonNull final WaniKaniSubjectDataApiResponse dataApiResponse
+    ) {
         return new SubjectType(
+                subjectId != null ? subjectId : -1,
                 getOrEmpty(dataApiResponse.getCharacters()),
                 getOrEmpty(dataApiResponse.getCharacterImage()),
                 getReadings(dataApiResponse.getReadings()),

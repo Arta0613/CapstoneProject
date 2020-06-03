@@ -48,6 +48,7 @@ public class LevelEntityMappers {
             subjectTypeEntities.add(new SubjectTypeEntity(
                     subjectId,
                     levelId,
+                    subjectType.getSubjectType(),
                     subjectType.getCharacter(),
                     subjectType.getCharacterImage(),
                     mapReadingEntities(subjectId, subjectType.getReadings()),
@@ -108,6 +109,7 @@ public class LevelEntityMappers {
 
             subjectTypes.add(new SubjectType(
                     subjectTypeEntity.getSubjectId(),
+                    subjectTypeEntity.getSubjectType(),
                     subjectTypeEntity.getCharacters(),
                     subjectTypeEntity.getCharacterImage(),
                     mapReadings(subjectTypeEntity.getReadingsList()),

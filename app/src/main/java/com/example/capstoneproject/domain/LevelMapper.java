@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.capstoneproject.data.response.WaniKaniSubjectApiResponse;
-import com.example.capstoneproject.data.response.WaniKaniSubjectDataApiResponse;
 import com.example.capstoneproject.data.response.WaniKaniSubjectDataReadingApiResponse;
 
 import java.util.ArrayList;
@@ -36,11 +35,11 @@ public class LevelMapper {
                     }
 
                     if (subject.getObject().equals(SUBJECT_RADICAL) && !isRadicalOmitted(subject.getData().getHiddenAt())) {
-                        levels.get(level).getRadicalList().add(mapSubjectType(subject.getId(), subject.getData()));
+                        levels.get(level).getRadicalList().add(mapSubjectType(subject));
                     } else if (subject.getObject().equals(SUBJECT_KANJI)) {
-                        levels.get(level).getKanjiList().add(mapSubjectType(subject.getId(), subject.getData()));
+                        levels.get(level).getKanjiList().add(mapSubjectType(subject));
                     } else if (subject.getObject().equals(SUBJECT_VOCABULARY)) {
-                        levels.get(level).getVocabularyList().add(mapSubjectType(subject.getId(), subject.getData()));
+                        levels.get(level).getVocabularyList().add(mapSubjectType(subject));
                     }
                 }
             }
@@ -50,17 +49,19 @@ public class LevelMapper {
     }
 
     @NonNull
-    private SubjectType mapSubjectType(
-            @Nullable final Integer subjectId,
-            @NonNull final WaniKaniSubjectDataApiResponse dataApiResponse
-    ) {
-        return new SubjectType(
-                subjectId != null ? subjectId : -1,
-                getOrEmpty(dataApiResponse.getCharacters()),
-                getOrEmpty(dataApiResponse.getCharacterImage()),
-                getReadings(dataApiResponse.getReadings()),
-                getOrEmpty(dataApiResponse.getFirstMeaning())
-        );
+    private SubjectType mapSubjectType(@NonNull final WaniKaniSubjectApiResponse subject) {
+        if (subject.getData() != null) {
+            return new SubjectType(
+                    subject.getId() != null ? subject.getId() : -1,
+                    getOrEmpty(subject.getObject()),
+                    getOrEmpty(subject.getData().getCharacters()),
+                    getOrEmpty(subject.getData().getCharacterImage()),
+                    getReadings(subject.getData().getReadings()),
+                    getOrEmpty(subject.getData().getFirstMeaning())
+            );
+        }
+
+        return new SubjectType(-1, "", "", "", new ArrayList<>(), "");
     }
 
     @NonNull

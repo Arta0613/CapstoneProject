@@ -1,10 +1,32 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:dropDownListViewStyle">@style/SpinnerStyle</item>
     </style>
 
+
+    <style name="LevelsSpinner" parent="Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:padding">16dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="SubjectsList">
+        <item name="android:scrollbars">horizontal</item>
+        <item name="android:requiresFadingEdge">horizontal</item>
+    </style>
+
+    <style name="SubjectLabel">
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Headline</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+
+    <style name="SpinnerStyle" parent="Widget.AppCompat.Light.ListView.DropDown">
+        <item name="android:divider">@color/colorAccent</item>
+        <item name="android:dividerHeight">1dp</item>
+    </style>
 </resources>

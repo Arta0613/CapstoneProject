@@ -23,6 +23,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * explicit call to setValue() or call().
  * <p>
  * Note that only one observer is going to be notified of changes.
+ * <p>
+ * source: https://github.com/android/architecture-samples/blob/dev-todo-mvvm-live/todoapp/app/src/main/java/com/example/android/architecture/blueprints/todoapp/SingleLiveEvent.java
  */
 public class SingleLiveEvent<T> extends MutableLiveData<T> {
 

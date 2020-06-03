@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#1565C0</color>
+    <color name="colorPrimaryDark">#003C8f</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="radical_color">#0088CC</color>
+    <color name="kanji_color">#F100A1</color>
+    <color name="vocabulary_color">#A100F1</color>
 </resources>

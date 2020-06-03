@@ -1,9 +1,12 @@
 package com.example.capstoneproject.ui;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -31,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
         binding.setLifecycleOwner(this);
         binding.setViewModel(viewModel);
 
+        setSupportActionBar(binding.mainToolbar);
+
         observeLevels();
+        listenToLevelSelector(binding.levelSelector);
     }
 
     private void observeLevels() {
@@ -44,6 +50,23 @@ public class MainActivity extends AppCompatActivity {
             if (getRepository().getWaniLevels() == null) {
                 getRepository().setWaniLevels(levels);
             }
+
+            viewModel.setSubjectAdapters();
+        });
+    }
+
+    private void listenToLevelSelector(@NonNull final AppCompatSpinner levelSelector) {
+        levelSelector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(
+                    final AdapterView<?> parent, final View view, final int position, final long id
+            ) {
+                viewModel.currentLevel = position;
+                viewModel.setSubjectAdapters();
+            }
+
+            @Override
+            public void onNothingSelected(final AdapterView<?> parent) {}
         });
     }
 

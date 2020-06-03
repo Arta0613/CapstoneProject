@@ -31,6 +31,7 @@ public class SubjectTypeEntity {
     @ColumnInfo(index = true)
     private final Integer levelId;
 
+    @NonNull private final String subjectType;
     @NonNull private final String characters;
     @NonNull private final String characterImage;
 
@@ -43,6 +44,7 @@ public class SubjectTypeEntity {
     public SubjectTypeEntity(
             @NonNull final Integer subjectId,
             @NonNull final Integer levelId,
+            @NonNull final String subjectType,
             @NonNull final String characters,
             @NonNull final String characterImage,
             @NonNull final List<ReadingEntity> readingsList,
@@ -50,6 +52,7 @@ public class SubjectTypeEntity {
     ) {
         this.subjectId = subjectId;
         this.levelId = levelId;
+        this.subjectType = subjectType;
         this.characters = characters;
         this.characterImage = characterImage;
         this.readingsList = readingsList;
@@ -64,6 +67,11 @@ public class SubjectTypeEntity {
     @NonNull
     public final Integer getLevelId() {
         return levelId;
+    }
+
+    @NonNull
+    public final String getSubjectType() {
+        return subjectType;
     }
 
     @NonNull
@@ -92,6 +100,7 @@ public class SubjectTypeEntity {
         return "SubjectTypeEntity{" +
                 "subjectId=" + subjectId +
                 ", levelId=" + levelId +
+                ", subjectType=" + subjectType +
                 ", characters='" + characters + '\'' +
                 ", characterImage='" + characterImage + '\'' +
                 ", readingsList=" + readingsList +

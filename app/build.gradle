@@ -17,6 +17,15 @@ android {
         buildConfigField 'String', 'TOKEN', '"add_api_token_value_here"'
     }
 
+    signingConfigs {
+        config {
+            storeFile file("$rootDir/keystore.jks")
+            storePassword 'password'
+            keyAlias 'capstone'
+            keyPassword 'password'
+        }
+    }
+
     buildTypes {
         debug {
             resValue "string", "ADMOB_APP_ID", "ca-app-pub-3940256099942544~3347511713"
@@ -25,6 +34,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+            resValue "string", "ADMOB_APP_ID", "ca-app-pub-3940256099942544~3347511713"
         }
     }
 

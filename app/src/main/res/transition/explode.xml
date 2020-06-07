@@ -3,6 +3,6 @@
     <targets>
         <target android:excludeId="@id/appBarLayout" />
         <target android:excludeId="@android:id/statusBarBackground" />
-        />
+        <target android:excludeId="@id/adView" />
     </targets>
 </explode>

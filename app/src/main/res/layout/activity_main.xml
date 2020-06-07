@@ -55,7 +55,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/radical_label"
-                    app:layout_constraintBottom_toTopOf="@+id/radical_recycler"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="@string/radical_label" />
@@ -65,7 +64,6 @@
                     style="@style/SubjectsList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toTopOf="@+id/kanji_label"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/radical_label"
@@ -77,7 +75,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/kanji_label"
-                    app:layout_constraintBottom_toTopOf="@+id/kanji_recycler"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/radical_recycler"
                     tools:text="@string/kanji_label" />
@@ -87,7 +84,6 @@
                     style="@style/SubjectsList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toTopOf="@+id/vocabulary_label"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/kanji_label"
@@ -99,7 +95,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/vocabulary_label"
-                    app:layout_constraintBottom_toTopOf="@+id/vocabulary_recycler"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/kanji_recycler"
                     tools:text="@string/vocabulary_label" />
@@ -109,11 +104,23 @@
                     style="@style/SubjectsList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/vocabulary_label"
                     app:setAdapter="@{viewModel.vocabularyAdapter}" />
+
+                <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/adView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    ads:adSize="BANNER"
+                    android:layout_marginTop="32dp"
+                    ads:adUnitId="@string/banner_ad_unit_id"
+                    android:layout_gravity="bottom|center"
+                    ads:layout_constraintTop_toBottomOf="@+id/vocabulary_recycler"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

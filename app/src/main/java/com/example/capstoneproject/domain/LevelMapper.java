@@ -70,7 +70,7 @@ public class LevelMapper {
                     getOrEmpty(subject.getData().getMeaningMnemonic())
             );
 
-            subjectType.getPronunciations().sort((o1, o2) -> Integer.compare((int) o1.getGender().charAt(0), (int) o2.getGender().charAt(0)));
+            subjectType.getPronunciations().sort((o1, o2) -> Integer.compare(o1.getGender().charAt(0), o2.getGender().charAt(0)));
 
             return subjectType;
         }

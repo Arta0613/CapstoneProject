@@ -15,8 +15,13 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.capstoneproject.R;
 import com.example.capstoneproject.WaniReferenceApplication;
 import com.example.capstoneproject.databinding.ActivityMainBinding;
+import com.example.capstoneproject.di.AppContainer;
+import com.example.capstoneproject.domain.SubjectType;
 import com.example.capstoneproject.repository.WaniRepository;
 import com.example.capstoneproject.utils.ViewModelFactory;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         listenToLevelSelector(binding.levelSelector);
 
         observeSubjectClickedEvent();
+
+        setAdView(binding.getRoot().findViewById(R.id.adView));
     }
 
     private void observeLevels() {
@@ -80,14 +87,44 @@ public class MainActivity extends AppCompatActivity {
 
             final Intent intent = new Intent(MainActivity.this, DetailActivity.class);
             final ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this, (View) binding.getRoot().findViewById(R.id.card_view), "cardview"
+                    this, binding.getRoot().findViewById(R.id.card_view), "cardview"
             );
             startActivity(intent, options.toBundle());
+
+            logEvent(subjectType);
         });
+    }
+
+    private void logEvent(@NonNull final SubjectType subjectType) {
+        final Bundle bundle = new Bundle();
+        bundle.putInt(FirebaseAnalytics.Param.ITEM_ID, subjectType.getSubjectId());
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, subjectType.getMeaning() + " :: " + subjectType.getCharacter());
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, subjectType.getSubjectType());
+        getFirebaseAnalytics().logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+    }
+
+    private void setAdView(final AdView adView) {
+        if (adView != null) {
+            // Create an ad request. Check logcat output for the hashed device ID to
+            // get test ads on a physical device.
+            final AdRequest adRequest = new AdRequest.Builder().build();
+
+            adView.loadAd(adRequest);
+        }
     }
 
     @NonNull
     private WaniRepository getRepository() {
-        return ((WaniReferenceApplication) getApplication()).getAppContainer().getWaniRepository();
+        return getAppContainer().getWaniRepository();
+    }
+
+    @NonNull
+    private FirebaseAnalytics getFirebaseAnalytics() {
+        return getAppContainer().getFirebaseAnalytics();
+    }
+
+    @NonNull
+    private AppContainer getAppContainer() {
+        return ((WaniReferenceApplication) getApplication()).getAppContainer();
     }
 }

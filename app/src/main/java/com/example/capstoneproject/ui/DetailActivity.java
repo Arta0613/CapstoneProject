@@ -4,6 +4,7 @@ import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import com.example.capstoneproject.utils.NetworkState;
 import com.example.capstoneproject.utils.ViewModelFactory;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -40,8 +42,19 @@ public class DetailActivity extends AppCompatActivity {
         binding.setViewModel(viewModel);
 
         setSupportActionBar(binding.detailToolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         viewModel.playAudioEvent.observe(this, this::playPronunciation);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull final MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            supportFinishAfterTransition();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

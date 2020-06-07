@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -20,13 +21,13 @@ import com.example.capstoneproject.utils.ViewModelFactory;
 public class MainActivity extends AppCompatActivity {
 
     private MainViewModel viewModel;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final ActivityMainBinding binding =
-                DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         viewModel = new ViewModelProvider(
                 this, new ViewModelFactory(getRepository())).get(MainViewModel.class
@@ -40,10 +41,7 @@ public class MainActivity extends AppCompatActivity {
         observeLevels();
         listenToLevelSelector(binding.levelSelector);
 
-        viewModel.showDetail.observe(this, subjectType -> {
-            getRepository().setSelectSubject(subjectType);
-            startActivity(new Intent(MainActivity.this, DetailActivity.class));
-        });
+        observeSubjectClickedEvent();
     }
 
     private void observeLevels() {
@@ -73,6 +71,18 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(final AdapterView<?> parent) {}
+        });
+    }
+
+    private void observeSubjectClickedEvent() {
+        viewModel.showDetail.observe(this, subjectType -> {
+            getRepository().setSelectSubject(subjectType);
+
+            final Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+            final ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this, (View) binding.getRoot().findViewById(R.id.card_view), "cardview"
+            );
+            startActivity(intent, options.toBundle());
         });
     }
 

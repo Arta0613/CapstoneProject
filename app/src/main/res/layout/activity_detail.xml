@@ -55,13 +55,13 @@
                     android:layout_marginTop="32dp"
                     android:text="@{subject.meaning}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                    app:layout_constraintBottom_toTopOf="@+id/subject_card"
+                    app:layout_constraintBottom_toTopOf="@+id/card_view"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="@string/subject_meaning" />
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/subject_card"
+                    android:id="@+id/card_view"
                     android:layout_width="match_parent"
                     android:layout_height="175dp"
                     android:layout_marginStart="32dp"
@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/subject_card"
+                    app:layout_constraintTop_toBottomOf="@+id/card_view"
                     app:subject="@{subject}"
                     tools:visibility="gone" />
 
@@ -110,7 +110,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/subject_card"
+                    app:layout_constraintTop_toBottomOf="@+id/card_view"
                     app:subject="@{subject}"
                     tools:visibility="visible" />
 
@@ -121,7 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/subject_card"
+                    app:layout_constraintTop_toBottomOf="@+id/card_view"
                     app:subject="@{subject}"
                     app:viewModel="@{viewModel}"
                     tools:visibility="gone" />

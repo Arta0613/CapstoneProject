@@ -7,7 +7,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.capstoneproject.domain.Level;
+import com.example.capstoneproject.domain.SubjectType;
 import com.example.capstoneproject.repository.WaniRepository;
+import com.example.capstoneproject.utils.SingleLiveEvent;
 
 import java.util.List;
 import java.util.Objects;
@@ -29,12 +31,18 @@ public class MainViewModel extends ViewModel {
     @NonNull private final SubjectAdapter kanjiAdapter = new SubjectAdapter();
     @NonNull private final SubjectAdapter vocabularyAdapter = new SubjectAdapter();
 
+    @NonNull public final SingleLiveEvent<SubjectType> showDetail = new SingleLiveEvent<>();
+
     public int currentLevel = 0;
     private int previousLevel = 0;
 
     public MainViewModel(@NonNull final WaniRepository repository) {
         this.repository = repository;
         levelsLiveData = repository.loadLocalLevels();
+
+        radicalsAdapter.setShowDetailEvent(showDetail);
+        kanjiAdapter.setShowDetailEvent(showDetail);
+        vocabularyAdapter.setShowDetailEvent(showDetail);
     }
 
     @NonNull

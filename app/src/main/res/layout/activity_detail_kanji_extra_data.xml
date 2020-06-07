@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="subject"
+            type="com.example.capstoneproject.domain.SubjectType" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/extra_data_padding_bottom">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/subject_readings_label"
+            style="@style/SubjectReadingLabelStyle"
+            android:text="@string/subject_readings_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/subject_readings_label" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/onyomi_reading_label"
+            style="@style/SubjectKanjiTypeLabelStyle"
+            android:text="@string/onyomi_reading_label"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/subject_readings_label"
+            app:layout_constraintTop_toBottomOf="@id/subject_readings_label"
+            tools:text="@string/onyomi_reading_label" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/kunyomi_reading_label"
+            style="@style/SubjectKanjiTypeLabelStyle"
+            android:text="@string/kunyomi_reading_label"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/nanori_reading_label"
+            app:layout_constraintStart_toEndOf="@+id/onyomi_reading_label"
+            app:layout_constraintTop_toBottomOf="@id/subject_readings_label"
+            tools:text="@string/kunyomi_reading_label" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/nanori_reading_label"
+            style="@style/SubjectKanjiTypeLabelStyle"
+            android:text="@string/nanori_reading_label"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/kunyomi_reading_label"
+            app:layout_constraintTop_toBottomOf="@id/subject_readings_label"
+            tools:text="@string/nanori_reading_label" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/onyomi_reading"
+            style="@style/SubjectReadingStyle"
+            android:text="@{subject.kanjiOnyomiReading}"
+            app:layout_constraintStart_toStartOf="@id/onyomi_reading_label"
+            app:layout_constraintTop_toBottomOf="@id/onyomi_reading_label"
+            tools:text="@string/onyomi_reading" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/kunyomi_reading"
+            style="@style/SubjectReadingStyle"
+            android:text="@{subject.kanjiKunyomiReading}"
+            app:layout_constraintStart_toStartOf="@+id/kunyomi_reading_label"
+            app:layout_constraintTop_toBottomOf="@id/kunyomi_reading_label"
+            tools:text="@string/kunyomi_reading" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/nanori_reading"
+            style="@style/SubjectReadingStyle"
+            android:text="@{subject.kanjiNanoriReading}"
+            app:layout_constraintStart_toStartOf="@+id/nanori_reading_label"
+            app:layout_constraintTop_toBottomOf="@id/nanori_reading_label"
+            tools:text="@string/nanori_reading" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/kanji_meaning_mnemonic_label"
+            style="@style/SubjectMeaningMnemonicLabelStyle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/onyomi_reading"
+            tools:text="@string/meaning_mnemonic_label" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/kanji_meaning_mnemonic"
+            style="@style/SubjectMeaningMnemonicStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/kanji_meaning_mnemonic_label"
+            app:spannedText="@{subject.meaningMnemonic}"
+            tools:text="@string/meaning_explanation" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

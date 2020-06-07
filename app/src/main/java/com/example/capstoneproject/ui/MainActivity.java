@@ -1,5 +1,6 @@
 package com.example.capstoneproject.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
         observeLevels();
         listenToLevelSelector(binding.levelSelector);
+
+        viewModel.showDetail.observe(this, subjectType -> {
+            getRepository().setSelectSubject(subjectType);
+            startActivity(new Intent(MainActivity.this, DetailActivity.class));
+        });
     }
 
     private void observeLevels() {

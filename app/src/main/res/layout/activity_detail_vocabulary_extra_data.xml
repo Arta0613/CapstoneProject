@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="subject"
+            type="com.example.capstoneproject.domain.SubjectType" />
+
+        <variable
+            name="viewModel"
+            type="com.example.capstoneproject.ui.DetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/extra_data_padding_bottom">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/subject_reading_label"
+            style="@style/SubjectReadingLabelStyle"
+            android:text="@string/subject_reading_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/subject_reading_label" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/vocabulary_reading"
+            style="@style/SubjectReadingStyle"
+            android:text="@{subject.vocabularyReading}"
+            app:layout_constraintStart_toStartOf="@+id/subject_reading_label"
+            app:layout_constraintTop_toBottomOf="@id/subject_reading_label"
+            tools:text="@string/vocabulary_reading" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/female_voice_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.playAudio(subject.femaleVoiceReading)}"
+            android:text="@{subject.femaleVoiceActorName}"
+            app:layout_constraintStart_toStartOf="@+id/vocabulary_reading"
+            app:layout_constraintTop_toBottomOf="@+id/vocabulary_reading"
+            tools:text="@string/female_voice_actor_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/female_voice_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{subject.femaleVoiceDescription}"
+            app:layout_constraintStart_toStartOf="@+id/female_voice_button"
+            app:layout_constraintTop_toBottomOf="@+id/female_voice_button"
+            tools:text="@string/female_voice_info" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/male_voice_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.playAudio(subject.maleVoiceReading)}"
+            android:text="@{subject.maleVoiceActorName}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/female_voice_button"
+            app:layout_constraintTop_toBottomOf="@+id/vocabulary_reading"
+            tools:text="@string/male_voice_actor_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/male_voice_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{subject.maleVoiceDescription}"
+            app:layout_constraintStart_toStartOf="@+id/male_voice_button"
+            app:layout_constraintTop_toBottomOf="@+id/male_voice_button"
+            tools:text="@string/male_voice_info" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/vocabulary_meaning_mnemonic_label"
+            style="@style/SubjectMeaningMnemonicLabelStyle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/female_voice_info"
+            tools:text="@string/meaning_mnemonic_label" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/vocabulary_meaning_mnemonic"
+            style="@style/SubjectMeaningMnemonicStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vocabulary_meaning_mnemonic_label"
+            app:spannedText="@{subject.meaningMnemonic}"
+            tools:text="@string/meaning_explanation" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

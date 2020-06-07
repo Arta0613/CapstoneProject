@@ -19,14 +19,9 @@
         app:cardBackground="@{subjectType.subjectColor}">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
+            style="@style/SubjectItemTextStyle"
             android:text="@{subjectType.character}"
-            android:textColor="#FFFFFF"
-            app:autoTextSize="@{subjectType.character.length()}"
-            android:singleLine="true"
+            app:listItemAutoSize="@{subjectType.character.length()}"
             app:visibleOrGone="@{!subjectType.character.empty}" />
 
         <androidx.appcompat.widget.AppCompatImageView

@@ -7,4 +7,5 @@
     <color name="radical_color">#0088CC</color>
     <color name="kanji_color">#F100A1</color>
     <color name="vocabulary_color">#A100F1</color>
+    <color name="level_selector_background">#666666</color>
 </resources>

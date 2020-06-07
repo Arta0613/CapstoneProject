@@ -8,10 +8,24 @@
         <item name="android:dropDownListViewStyle">@style/SpinnerStyle</item>
     </style>
 
+    <style name="SpinnerStyle" parent="Widget.AppCompat.Light.ListView.DropDown">
+        <item name="android:background">@color/level_selector_background</item>
+        <item name="android:divider">@color/colorAccent</item>
+        <item name="android:dividerHeight">1dp</item>
+    </style>
 
     <style name="LevelsSpinner" parent="Widget.AppCompat.DropDownItem.Spinner">
         <item name="android:padding">16dp</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="SubjectItemTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
     <style name="SubjectsList">
@@ -25,8 +39,44 @@
         <item name="android:layout_marginTop">16dp</item>
     </style>
 
-    <style name="SpinnerStyle" parent="Widget.AppCompat.Light.ListView.DropDown">
-        <item name="android:divider">@color/colorAccent</item>
-        <item name="android:dividerHeight">1dp</item>
+    <style name="SubjectReadingLabelStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Headline</item>
+    </style>
+
+    <style name="SubjectReadingStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+    </style>
+
+    <style name="SubjectKanjiTypeLabelStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body2</item>
+    </style>
+
+    <style name="SubjectMeaningMnemonicLabelStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:text">@string/meaning_mnemonic_label</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Headline</item>
+    </style>
+
+    <style name="SubjectMeaningMnemonicStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body2</item>
+        <item name="android:textSize">16sp</item>
     </style>
 </resources>

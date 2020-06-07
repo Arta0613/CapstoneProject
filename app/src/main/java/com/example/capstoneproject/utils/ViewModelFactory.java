@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.capstoneproject.repository.WaniRepository;
+import com.example.capstoneproject.ui.DetailViewModel;
 import com.example.capstoneproject.ui.MainViewModel;
 
 public class ViewModelFactory implements ViewModelProvider.Factory {
@@ -21,6 +22,8 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull final Class<T> modelClass) {
         if (modelClass.isAssignableFrom(MainViewModel.class)) {
             return (T) new MainViewModel(repository);
+        } else if (modelClass.isAssignableFrom(DetailViewModel.class)) {
+            return (T) new DetailViewModel(repository);
         }
 
         throw new IllegalArgumentException("Unknown ViewModel Class: " + modelClass);

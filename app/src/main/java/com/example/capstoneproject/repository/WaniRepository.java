@@ -9,6 +9,7 @@ import androidx.lifecycle.Transformations;
 
 import com.example.capstoneproject.database.LevelEntityMappers;
 import com.example.capstoneproject.domain.Level;
+import com.example.capstoneproject.domain.SubjectType;
 import com.example.capstoneproject.repository.local.WaniLocalDataSource;
 import com.example.capstoneproject.repository.network.WaniRemoteDataSource;
 
@@ -25,6 +26,7 @@ public class WaniRepository {
 
     @Nullable
     private List<Level> waniLevels;
+    private SubjectType selectedSubject;
 
     public WaniRepository(@NonNull final Context context) {
         remoteDataSource = new WaniRemoteDataSource();
@@ -57,5 +59,14 @@ public class WaniRepository {
 
     public void setWaniLevels(@NonNull final List<Level> waniLevels) {
         this.waniLevels = waniLevels;
+    }
+
+    @Nullable
+    public final SubjectType getSelectedSubject() {
+        return selectedSubject;
+    }
+
+    public void setSelectSubject(@NonNull final SubjectType selectedSubject) {
+        this.selectedSubject = selectedSubject;
     }
 }

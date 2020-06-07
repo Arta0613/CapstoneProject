@@ -35,5 +35,4 @@
                 android:resource="@xml/subject_widget_info" />
         </receiver>
     </application>
-
 </manifest>

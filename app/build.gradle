@@ -17,6 +17,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            resValue "string", "ADMOB_APP_ID", "ca-app-pub-3940256099942544~3347511713"
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -30,6 +34,13 @@ android {
     compileOptions {
         sourceCompatibility 1.8
         targetCompatibility 1.8
+    }
+    sourceSets {
+        debug {
+            manifest {
+                srcFile 'src/debug/AndroidManifest.xml'
+            }
+        }
     }
 
     configurations.all {
@@ -52,6 +63,7 @@ dependencies {
     implementation 'androidx.room:room-rxjava2:2.2.5'
     annotationProcessor 'androidx.room:room-compiler:2.2.5'
 
+    implementation 'com.google.android.gms:play-services-ads:19.1.0'
     implementation 'com.google.android.material:material:1.1.0'
 
     implementation 'com.github.bumptech.glide:glide:4.11.0'

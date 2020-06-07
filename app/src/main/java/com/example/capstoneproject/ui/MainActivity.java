@@ -17,6 +17,8 @@ import com.example.capstoneproject.WaniReferenceApplication;
 import com.example.capstoneproject.databinding.ActivityMainBinding;
 import com.example.capstoneproject.repository.WaniRepository;
 import com.example.capstoneproject.utils.ViewModelFactory;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         listenToLevelSelector(binding.levelSelector);
 
         observeSubjectClickedEvent();
+
+        setAdView((AdView) binding.getRoot().findViewById(R.id.adView));
     }
 
     private void observeLevels() {
@@ -72,6 +76,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(final AdapterView<?> parent) {}
         });
+    }
+
+    private void setAdView(final AdView adView) {
+        if (adView != null) {
+            // Create an ad request. Check logcat output for the hashed device ID to
+            // get test ads on a physical device.
+            final AdRequest adRequest = new AdRequest.Builder().build();
+
+            adView.loadAd(adRequest);
+        }
     }
 
     private void observeSubjectClickedEvent() {

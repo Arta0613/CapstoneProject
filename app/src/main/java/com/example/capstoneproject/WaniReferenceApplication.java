@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 
 import com.example.capstoneproject.di.AppContainer;
+import com.example.capstoneproject.utils.MobileAdsConfiguration;
 
 public class WaniReferenceApplication extends Application {
 
@@ -14,6 +15,7 @@ public class WaniReferenceApplication extends Application {
     public void onCreate() {
         super.onCreate();
         appContainer = new AppContainer(getApplicationContext());
+        new MobileAdsConfiguration().init();
     }
 
     @NonNull

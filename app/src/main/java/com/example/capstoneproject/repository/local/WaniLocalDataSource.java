@@ -27,6 +27,11 @@ public class WaniLocalDataSource {
     }
 
     @NonNull
+    public List<LevelEntity> getLevelsSynchronous() {
+        return dao.getLevelsSynchronous();
+    }
+
+    @NonNull
     public Single<List<Long>> insertLevels(@NonNull final List<LevelEntity> levelEntities) {
         return dao.insertLevels(levelEntities);
     }

@@ -13,4 +13,8 @@
     <string name="error_retrieving_connection">\"Error retrieving connection state: \"</string>
     <string name="could_not_play_audio">Couldn\'t play audio</string>
     <string name="no_connection_when_playing_audio">Please connect to the internet to play audio</string>
+    <string name="subject_widget_title_text">Subject Meaning</string>
+    <string name="subject_widget_first_load">Click me to load the app (for the first time) then try adding me again.</string>
+    <string name="characters_image">Characters Image</string>
+    <string name="unavailable_radical">Character for this Radical is unavailable. Load the app to see the image.</string>
 </resources>

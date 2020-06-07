@@ -28,6 +28,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="@string/characters_image"
             android:scaleType="fitCenter"
             app:imageUrl="@{subjectType.characterImage}"
             app:visibleOrGone="@{subjectType.character.empty}" />

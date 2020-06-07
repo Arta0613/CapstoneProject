@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Transformations;
 
 import com.example.capstoneproject.database.LevelEntityMappers;
+import com.example.capstoneproject.database.entities.LevelEntity;
 import com.example.capstoneproject.domain.Level;
 import com.example.capstoneproject.domain.SubjectType;
 import com.example.capstoneproject.repository.local.WaniLocalDataSource;
@@ -44,6 +45,11 @@ public class WaniRepository {
                 localDataSource.getLevels(),
                 levelEntityMappers::mapLevels
         );
+    }
+
+    @NonNull
+    public final List<LevelEntity> loadLocalLevelsSynchronous() {
+        return localDataSource.getLevelsSynchronous();
     }
 
     @NonNull

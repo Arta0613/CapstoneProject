@@ -21,6 +21,10 @@ public interface WaniReferenceDao {
     LiveData<List<LevelEntity>> getLevels();
 
     @Transaction
+    @Query("SELECT * FROM LevelEntity")
+    List<LevelEntity> getLevelsSynchronous();
+
+    @Transaction
     @Insert(entity = LevelEntity.class, onConflict = OnConflictStrategy.REPLACE)
     Single<List<Long>> insertLevels(final List<LevelEntity> levelEntities);
 }

@@ -56,7 +56,6 @@
                     android:layout_height="wrap_content"
                     android:text="@string/radical_label"
                     app:layout_constraintBottom_toTopOf="@+id/radical_recycler"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="@string/radical_label" />

@@ -6,10 +6,13 @@ import androidx.lifecycle.ViewModel;
 import com.example.capstoneproject.repository.WaniRepository;
 import com.example.capstoneproject.utils.SingleLiveEvent;
 
+import java.util.Objects;
+
 public class DetailViewModel extends ViewModel {
 
     @NonNull private final WaniRepository repository;
     @NonNull public final SingleLiveEvent<String> playAudioEvent = new SingleLiveEvent<>();
+    @NonNull public final SingleLiveEvent<String> shareEvent = new SingleLiveEvent<>();
 
     public DetailViewModel(@NonNull final WaniRepository repository) {
         this.repository = repository;
@@ -17,5 +20,12 @@ public class DetailViewModel extends ViewModel {
 
     public void playAudio(@NonNull final String audioUrl) {
         playAudioEvent.setValue(audioUrl);
+    }
+
+    public void share() {
+        shareEvent.setValue(
+                Objects.requireNonNull(repository.getSelectedSubject()).getMeaning()
+                        + " : " + repository.getSelectedSubject().getCharacter()
+        );
     }
 }

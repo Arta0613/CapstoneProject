@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="subject_meaning">One</string>
+    <string name="subject_slug">一</string>
+    <string name="onyomi_reading">いち, いつ</string>
+    <string name="kunyomi_reading">ひと</string>
+    <string name="nanori_reading">かず</string>
+    <string name="vocabulary_reading">いち</string>
+    <string name="meaning_explanation">As is the case with most vocab words that consist of a single kanji, this vocab word has the same meaning as the kanji it parallels, which is one.</string>
+    <string name="female_voice_actor_name">Kyoko</string>
+    <string name="female_voice_info">Tokyo Accent, Female</string>
+    <string name="male_voice_actor_name">Kenichi</string>
+    <string name="male_voice_info">Tokyo Accent, Male</string>
+</resources>

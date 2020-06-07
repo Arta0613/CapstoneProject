@@ -11,14 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.capstoneproject.BR;
 import com.example.capstoneproject.R;
 import com.example.capstoneproject.domain.SubjectType;
+import com.example.capstoneproject.utils.SingleLiveEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectViewHolder> {
 
-    @NonNull
-    private List<SubjectType> subjectList = new ArrayList<>();
+    @NonNull private List<SubjectType> subjectList = new ArrayList<>();
+    private SingleLiveEvent<SubjectType> showDetail;
 
     @NonNull
     @Override
@@ -44,6 +45,10 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
         this.subjectList = subjectList;
     }
 
+    public void setShowDetailEvent(@NonNull final SingleLiveEvent<SubjectType> showDetail) {
+        this.showDetail = showDetail;
+    }
+
     class SubjectViewHolder extends RecyclerView.ViewHolder {
 
         private final ViewDataBinding binding;
@@ -54,7 +59,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectV
         }
 
         void bind(final int position) {
-            binding.getRoot().setOnClickListener(l -> {});
+            binding.getRoot().setOnClickListener(l -> showDetail.setValue(subjectList.get(position)));
             binding.setVariable(BR.subjectType, subjectList.get(position));
             binding.executePendingBindings();
         }

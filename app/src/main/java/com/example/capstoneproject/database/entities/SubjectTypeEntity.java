@@ -7,6 +7,7 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
+import com.example.capstoneproject.database.PronunciationAudioEntityTypeConverter;
 import com.example.capstoneproject.database.ReadingEntityTypeConverter;
 
 import java.util.List;
@@ -39,7 +40,12 @@ public class SubjectTypeEntity {
     @TypeConverters(ReadingEntityTypeConverter.class)
     private final List<ReadingEntity> readingsList;
 
+    @NonNull
+    @TypeConverters(PronunciationAudioEntityTypeConverter.class)
+    private final List<PronunciationAudioEntity> pronunciationsList;
+
     @NonNull private final String meaning;
+    @NonNull private final String meaningMnemonic;
 
     public SubjectTypeEntity(
             @NonNull final Integer subjectId,
@@ -48,7 +54,9 @@ public class SubjectTypeEntity {
             @NonNull final String characters,
             @NonNull final String characterImage,
             @NonNull final List<ReadingEntity> readingsList,
-            @NonNull final String meaning
+            @NonNull final List<PronunciationAudioEntity> pronunciationsList,
+            @NonNull final String meaning,
+            @NonNull final String meaningMnemonic
     ) {
         this.subjectId = subjectId;
         this.levelId = levelId;
@@ -56,7 +64,9 @@ public class SubjectTypeEntity {
         this.characters = characters;
         this.characterImage = characterImage;
         this.readingsList = readingsList;
+        this.pronunciationsList = pronunciationsList;
         this.meaning = meaning;
+        this.meaningMnemonic = meaningMnemonic;
     }
 
     @NonNull
@@ -90,8 +100,18 @@ public class SubjectTypeEntity {
     }
 
     @NonNull
+    public final List<PronunciationAudioEntity> getPronunciationsList() {
+        return pronunciationsList;
+    }
+
+    @NonNull
     public final String getMeaning() {
         return meaning;
+    }
+
+    @NonNull
+    public String getMeaningMnemonic() {
+        return meaningMnemonic;
     }
 
     @NonNull
@@ -104,7 +124,9 @@ public class SubjectTypeEntity {
                 ", characters='" + characters + '\'' +
                 ", characterImage='" + characterImage + '\'' +
                 ", readingsList=" + readingsList +
+                ", pronunciationsList=" + pronunciationsList +
                 ", meaning='" + meaning + '\'' +
+                ", meaningMnemonic='" + meaningMnemonic + '\'' +
                 '}';
     }
 }

@@ -3,4 +3,14 @@
     <string name="radical_label">Radicals</string>
     <string name="kanji_label">Kanji</string>
     <string name="vocabulary_label">Vocabulary</string>
+    <string name="subject_reading_label">Reading</string>
+    <string name="subject_readings_label">Readings</string>
+    <string name="onyomi_reading_label">On’yomi</string>
+    <string name="kunyomi_reading_label">Kun’yomi</string>
+    <string name="nanori_reading_label">Nanori</string>
+    <string name="name_mnemonic_label">Name Mnemonic</string>
+    <string name="meaning_mnemonic_label">Meaning Mnemonic</string>
+    <string name="error_retrieving_connection">\"Error retrieving connection state: \"</string>
+    <string name="could_not_play_audio">Couldn\'t play audio</string>
+    <string name="no_connection_when_playing_audio">Please connect to the internet to play audio</string>
 </resources>

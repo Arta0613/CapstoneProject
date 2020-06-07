@@ -169,8 +169,18 @@ public class WaniKaniSubjectDataApiResponse {
     }
 
     @Nullable
+    public String getMeaningMnemonic() {
+        return meaningMnemonic;
+    }
+
+    @Nullable
     public final List<WaniKaniSubjectDataReadingApiResponse> getReadings() {
         return readings;
+    }
+
+    @Nullable
+    public final List<WaniKaniSubjectDataPronunciationAudioApiResponse> getPronunciationAudios() {
+        return pronunciationAudios;
     }
 
     @NonNull

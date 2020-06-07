@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.capstoneproject.data.response.WaniKaniSubjectApiResponse;
+import com.example.capstoneproject.data.response.WaniKaniSubjectDataPronunciationAudioApiResponse;
 import com.example.capstoneproject.data.response.WaniKaniSubjectDataReadingApiResponse;
 
 import java.util.ArrayList;
@@ -51,27 +52,45 @@ public class LevelMapper {
     @NonNull
     private SubjectType mapSubjectType(@NonNull final WaniKaniSubjectApiResponse subject) {
         if (subject.getData() != null) {
-            return new SubjectType(
+            final String typeOfSubject = getOrEmpty(subject.getObject());
+            final List<Reading> readingList = getReadings(subject.getData().getReadings(), typeOfSubject);
+            String vocabularyPrimaryReading = "";
+            if (typeOfSubject.equals(SUBJECT_VOCABULARY) && readingList.size() == 1) {
+                vocabularyPrimaryReading = readingList.get(0).getReading();
+            }
+
+            final SubjectType subjectType = new SubjectType(
                     subject.getId() != null ? subject.getId() : -1,
                     getOrEmpty(subject.getObject()),
                     getOrEmpty(subject.getData().getCharacters()),
                     getOrEmpty(subject.getData().getCharacterImage()),
-                    getReadings(subject.getData().getReadings()),
-                    getOrEmpty(subject.getData().getFirstMeaning())
+                    readingList,
+                    getPronunciations(subject.getData().getPronunciationAudios(), vocabularyPrimaryReading),
+                    getOrEmpty(subject.getData().getFirstMeaning()),
+                    getOrEmpty(subject.getData().getMeaningMnemonic())
             );
+
+            subjectType.getPronunciations().sort((o1, o2) -> Integer.compare((int) o1.getGender().charAt(0), (int) o2.getGender().charAt(0)));
+
+            return subjectType;
         }
 
-        return new SubjectType(-1, "", "", "", new ArrayList<>(), "");
+        return new SubjectType(-1, "", "", "", new ArrayList<>(), new ArrayList<>(), "", "");
     }
 
     @NonNull
     private List<Reading> getReadings(
-            @Nullable final List<WaniKaniSubjectDataReadingApiResponse> dataReadingApiResponses
+            @Nullable final List<WaniKaniSubjectDataReadingApiResponse> dataReadingApiResponses,
+            @NonNull final String typeOfSubject
     ) {
         final List<Reading> readings = new ArrayList<>();
 
         if (dataReadingApiResponses != null) {
             for (final WaniKaniSubjectDataReadingApiResponse dataReadingApiResponse : dataReadingApiResponses) {
+                if (typeOfSubject.equals(SUBJECT_VOCABULARY) && !getOrFalse(dataReadingApiResponse.isPrimary())) {
+                    continue;
+                }
+
                 readings.add(new Reading(
                         getOrEmpty(dataReadingApiResponse.getType()),
                         getOrEmpty(dataReadingApiResponse.getReading()),
@@ -82,6 +101,36 @@ public class LevelMapper {
         }
 
         return readings;
+    }
+
+    @NonNull
+    private List<PronunciationAudio> getPronunciations(
+            @Nullable final List<WaniKaniSubjectDataPronunciationAudioApiResponse> pronunciationAudioApiResponses,
+            @NonNull final String vocabularyPrimaryReading
+    ) {
+        final List<PronunciationAudio> pronunciationAudios = new ArrayList<>();
+
+        if (pronunciationAudioApiResponses != null) {
+            for (final WaniKaniSubjectDataPronunciationAudioApiResponse pronunciationAudioApiResponse : pronunciationAudioApiResponses) {
+
+                if (pronunciationAudioApiResponse.getMetadata() == null ||
+                        pronunciationAudioApiResponse.getContentType() != null && pronunciationAudioApiResponse.getContentType().contains("ogg") ||
+                        pronunciationAudioApiResponse.getMetadata().getPronunciation() != null && !pronunciationAudioApiResponse.getMetadata().getPronunciation().equals(vocabularyPrimaryReading)
+                ) {
+                    continue;
+                }
+
+                pronunciationAudios.add(new PronunciationAudio(
+                        getOrEmpty(pronunciationAudioApiResponse.getUrl()),
+                        getOrEmpty(pronunciationAudioApiResponse.getMetadata().getPronunciation()),
+                        getOrEmpty(pronunciationAudioApiResponse.getMetadata().getVoiceActorName()),
+                        getOrEmpty(pronunciationAudioApiResponse.getMetadata().getGender()),
+                        getOrEmpty(pronunciationAudioApiResponse.getMetadata().getVoiceDescription())
+                ));
+            }
+        }
+
+        return pronunciationAudios;
     }
 
     private boolean isRadicalOmitted(@Nullable final String hiddenAt) {

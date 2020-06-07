@@ -24,6 +24,21 @@ public class WaniKaniSubjectDataPronunciationAudioApiResponse {
         this.contentType = contentType;
     }
 
+    @Nullable
+    public final String getUrl() {
+        return url;
+    }
+
+    @Nullable
+    public final WaniKaniSubjectDataPronunciationAudioMetadataApiResponse getMetadata() {
+        return metadata;
+    }
+
+    @Nullable
+    public final String getContentType() {
+        return contentType;
+    }
+
     @NonNull
     @Override
     public String toString() {
@@ -35,7 +50,7 @@ public class WaniKaniSubjectDataPronunciationAudioApiResponse {
     }
 
     @SuppressWarnings("unused")
-    class WaniKaniSubjectDataPronunciationAudioMetadataApiResponse {
+    public class WaniKaniSubjectDataPronunciationAudioMetadataApiResponse {
 
         @Nullable private final String gender;
 
@@ -67,6 +82,36 @@ public class WaniKaniSubjectDataPronunciationAudioApiResponse {
             this.voiceActorId = voiceActorId;
             this.voiceActorName = voiceActorName;
             this.voiceDescription = voiceDescription;
+        }
+
+        @Nullable
+        public final String getGender() {
+            return gender;
+        }
+
+        @Nullable
+        public final Integer getSourceId() {
+            return sourceId;
+        }
+
+        @Nullable
+        public final String getPronunciation() {
+            return pronunciation;
+        }
+
+        @Nullable
+        public final Integer getVoiceActorId() {
+            return voiceActorId;
+        }
+
+        @Nullable
+        public final String getVoiceActorName() {
+            return voiceActorName;
+        }
+
+        @Nullable
+        public final String getVoiceDescription() {
+            return voiceDescription;
         }
 
         @NonNull

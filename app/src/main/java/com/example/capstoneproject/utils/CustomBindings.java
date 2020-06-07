@@ -57,8 +57,10 @@ public class CustomBindings {
         }
     }
 
-    @BindingAdapter("autoTextSize")
-    public static void setTextSize(final AppCompatTextView textView, final int charactersLength) {
+    @BindingAdapter("listItemAutoSize")
+    public static void setListItemTextSize(
+            final AppCompatTextView textView, final int charactersLength
+    ) {
         switch (charactersLength) {
             case 1:
             case 2:
@@ -76,5 +78,32 @@ public class CustomBindings {
             default:
                 textView.setTextSize(35);
         }
+    }
+
+    @BindingAdapter("detailAutoSize")
+    public static void setDetailTextSize(
+            final AppCompatTextView textView, final int charactersLength
+    ) {
+        switch (charactersLength) {
+            case 1:
+            case 2:
+                textView.setTextSize(115);
+                break;
+            case 3:
+                textView.setTextSize(100);
+                break;
+            case 4:
+                textView.setTextSize(90);
+                break;
+            default:
+                textView.setTextSize(80);
+        }
+    }
+
+    @BindingAdapter("spannedText")
+    public static void setSpannedText(
+            @NonNull final AppCompatTextView textView, final String mnemonic
+    ) {
+        textView.setText(SubjectHelper.getColorCodedMnemonic(textView.getContext(), mnemonic));
     }
 }

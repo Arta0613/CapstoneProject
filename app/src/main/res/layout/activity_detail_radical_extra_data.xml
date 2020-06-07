@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="subject"
+            type="com.example.capstoneproject.domain.SubjectType" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/extra_data_padding_bottom">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/name_mnemonic_label"
+            style="@style/SubjectMeaningMnemonicLabelStyle"
+            android:text="@string/name_mnemonic_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/meaning_mnemonic_label" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/radical_name_mnemonic"
+            style="@style/SubjectMeaningMnemonicStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_mnemonic_label"
+            app:spannedText="@{subject.meaningMnemonic}"
+            tools:text="@string/meaning_explanation" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

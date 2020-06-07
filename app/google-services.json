@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "312962250745",
+    "firebase_url": "https://wani-reference.firebaseio.com",
+    "project_id": "wani-reference",
+    "storage_bucket": "wani-reference.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312962250745:android:bc7a9346b9e1a4e7fcef28",
+        "android_client_info": {
+          "package_name": "com.example.capstoneproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "312962250745-93lvp1efbhfiat3i3usf40bg1p45d7c4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZnekiEUL-E3MHrZo2CswVGc7QWnmiBt8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "312962250745-93lvp1efbhfiat3i3usf40bg1p45d7c4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

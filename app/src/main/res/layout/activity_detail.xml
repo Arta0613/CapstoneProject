@@ -134,7 +134,6 @@
             android:clickable="true"
             android:elevation="6dp"
             android:focusable="true"
-            android:onClick="@{() -> viewModel.share()}"
             android:src="@android:drawable/ic_menu_share"
             android:translationZ="12dp"
             app:layout_anchor="@+id/card_view"

@@ -16,12 +16,10 @@ import com.example.capstoneproject.R;
 import com.example.capstoneproject.WaniReferenceApplication;
 import com.example.capstoneproject.databinding.ActivityMainBinding;
 import com.example.capstoneproject.di.AppContainer;
-import com.example.capstoneproject.domain.SubjectType;
 import com.example.capstoneproject.repository.WaniRepository;
 import com.example.capstoneproject.utils.ViewModelFactory;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -77,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected(final AdapterView<?> parent) {}
+            public void onNothingSelected(final AdapterView<?> parent) {
+            }
         });
     }
 
@@ -90,17 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     this, binding.getRoot().findViewById(R.id.card_view), "cardview"
             );
             startActivity(intent, options.toBundle());
-
-            logEvent(subjectType);
         });
-    }
-
-    private void logEvent(@NonNull final SubjectType subjectType) {
-        final Bundle bundle = new Bundle();
-        bundle.putInt(FirebaseAnalytics.Param.ITEM_ID, subjectType.getSubjectId());
-        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, subjectType.getMeaning() + " :: " + subjectType.getCharacter());
-        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, subjectType.getSubjectType());
-        getFirebaseAnalytics().logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
     }
 
     private void setAdView(final AdView adView) {
@@ -116,11 +105,6 @@ public class MainActivity extends AppCompatActivity {
     @NonNull
     private WaniRepository getRepository() {
         return getAppContainer().getWaniRepository();
-    }
-
-    @NonNull
-    private FirebaseAnalytics getFirebaseAnalytics() {
-        return getAppContainer().getFirebaseAnalytics();
     }
 
     @NonNull
